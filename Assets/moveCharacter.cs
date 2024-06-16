@@ -83,9 +83,9 @@ public class moveCharacter : MonoBehaviour
     public void spawnBullet()
     {
         //testBullet.setPositions(transform.position.x, transform.position.y, 1f);
-        testBullet.setVelocity(2f,transform.rotation.z);
-        testBullet.setRotation(0, 0, 0);
-        testBullet.settingUpTransformBullet();
+        //testBullet.setVelocity(2f,transform.rotation.z);
+        //testBullet.setRotation(0, 0, 0);
+        //testBullet.settingUpTransformBullet();
         //testBullet.originBullet = "Player";
     }
 

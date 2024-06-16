@@ -15,6 +15,7 @@ public class bulletScript : MonoBehaviour
     private float bulletX;
     private float bulletY;
     private float velocityX;
+    private float velocityY;
     private Camera mainCamera;
     private Rigidbody2D rbBullet2D;
     private SpriteRenderer spriteBullet;
@@ -64,9 +65,10 @@ public class bulletScript : MonoBehaviour
 
     public void settingUpRigidbody2DBullet()
     {
-        //Debug.Log($"Essa é a força do eixoY: {10000f * transform.rotation.z}");
+        //Debug.Log($"Essa ï¿½ a forï¿½a do eixoY: {10000f * transform.rotation.z}");
         //this.GetComponent<Rigidbody2D>().AddForce(new Vector2(this.velocityX * this.rotationGun * 230f, this.velocityX * (this.rotationGun*200f)));
-        rbBullet2D.velocity = transform.right * this.velocityX;
+        rbBullet2D.velocity = new Vector3(velocityX, velocityY, 0);
+        //rbBullet2D.AddForce(new Vector2(velocityX,velocityY));
 
         //this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionY;
     }
@@ -119,9 +121,10 @@ public class bulletScript : MonoBehaviour
         rotationZ = z;
     }
 
-    public void setVelocity(float velocityX, float rotationGun)
+    public void setVelocity(float velocityX, float velocityY)
     {
         this.velocityX = velocityX;
+        this.velocityY = velocityY;
         //this.rotationGun = rotationGun;
         this.settingUpRigidbody2DBullet();
     }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Properties;
 using UnityEngine;
 
 public class EspingardaScript : MonoBehaviour
@@ -17,6 +18,8 @@ public class EspingardaScript : MonoBehaviour
     public Transform mainCharacter;
     public Vector3 rotation;
     // Start is called before the first frame update
+
+    
     void Start()
     {
         mainCharacter = GameObject.FindGameObjectWithTag("mainCharacter").GetComponent<Transform>();
@@ -25,6 +28,7 @@ public class EspingardaScript : MonoBehaviour
 
     }
 
+
     // Update is called once per frame
     void Update()
     {
@@ -32,6 +36,7 @@ public class EspingardaScript : MonoBehaviour
         rotation = mouseVector - transform.position;
         Vector3 rotationCharacter = mouseVector - mainCharacter.transform.position;
         rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
+        //Debug.Log($"Tangente A: {rotZ}");
         rotCharacter = Mathf.Atan2(rotationCharacter.y, rotationCharacter.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, rotZ);
         //Debug.Log(rotCharacter);
@@ -75,15 +80,47 @@ public class EspingardaScript : MonoBehaviour
 
     public void spawnBullet()
     {
-        //Debug.Log($"Eixo Y: {Mathf.Sin(rotation.y * Mathf.Deg2Rad)}");
-        //Debug.Log($"Eixo X: {Mathf.Cos(rotation.x * Mathf.Deg2Rad)}");
-        Debug.Log($"Eixo Y: {(rotation.normalized).y}");
-        Debug.Log($"Eixo X: {(rotation.normalized).x}");
+        float velocityY;
+        float velocityX;
+        //Debug.Log($"Tangente A: {rotZ}");
+        //Debug.Log($"Tangente R: {rotZ * Mathf.Deg2Rad}");
+        //Debug.Log($"RotY: {rotation.normalized.y}");
+        //Debug.Log($"RotX: {rotation.normalized.x}");
+        if (rotZ > 0)
+        {
+            if (rotZ > 0 && rotZ < 90)
+            {
+                velocityY = rotZ;
+                velocityX = 90 - rotZ;
+            }
+            else
+            {
+                velocityX = rotZ - 90;
+                velocityY = 90 - velocityX;
+                velocityX *= -1f;
+            }
+        }
+        else
+        {
+            if (rotZ < 0 && rotZ > -90)
+            {
+                velocityY = rotZ;
+                velocityX = 90 - (-rotZ);
+            }
+            else
+            {
+                velocityX = (-rotZ) - 90;
+                velocityY = 90 - velocityX;
+                velocityX *= -1f;
+                velocityY *= -1f;
+            }
+        }
+        Debug.Log($"VelocidadeX: {velocityX / 1.5f}"); 
+        Debug.Log($"VelocidadeY: {velocityY / 1.5f}");
         bullet.setPositions(bulletSpawn.position);
         bullet.setRotation(0, 0, rotZ);
         bullet.settingUpTransformBullet();
-        bullet.setVelocity( 8f, transform.rotation.z);
-        //Debug.Log(rotZ);
+        bullet.setVelocity((velocityX/3f),(velocityY/3f));
 
     }
 

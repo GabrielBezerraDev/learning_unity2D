@@ -36,15 +36,15 @@ public class machineBehavior : MonoBehaviour
     public void createBullet()
     {
 
-        if (fireRate.fireRatee(3f))
-        {
-            setScriptBullet();
-            bullet.setPositions(spawnBulletMachineGun.transform.position);
-            bullet.setVelocity(-6f, transform.rotation.z);
-            bullet.setGravity();
-            bullet.setDamageBullet(20f);
-            bullet.setRotation(0,180,0);
-            bullet.settingUpTransformBullet();
-        }
+        // if (fireRate.fireRatee(3f))
+        // {
+        //     setScriptBullet();
+        //     bullet.setPositions(spawnBulletMachineGun.transform.position);
+        //     bullet.setVelocity(-6f, transform.rotation.z);
+        //     bullet.setGravity();
+        //     bullet.setDamageBullet(20f);
+        //     bullet.setRotation(0,180,0);
+        //     bullet.settingUpTransformBullet();
+        // }
     }
 }
