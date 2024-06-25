@@ -57,37 +57,7 @@ public class EspingardaScript : MonoBehaviour
 
     public void spawnBullet()
     {
-        float velocityY;
-        float velocityX;
-        if (rotZ > 0)
-        {
-            if (rotZ > 0 && rotZ < 90)
-            {
-                velocityY = rotZ;
-                velocityX = 90 - rotZ;
-            }
-            else
-            {
-                velocityX = rotZ - 90;
-                velocityY = 90 - velocityX;
-                velocityX *= -1f;
-            }
-        }
-        else
-        {
-            if (rotZ < 0 && rotZ > -90)
-            {
-                velocityY = rotZ;
-                velocityX = 90 - (-rotZ);
-            }
-            else
-            {
-                velocityX = (-rotZ) - 90;
-                velocityY = 90 - velocityX;
-                velocityX *= -1f;
-                velocityY *= -1f;
-            }
-        }
+
         Debug.Log($"VelocidadeX: {velocityX / 1.5f}"); 
         Debug.Log($"VelocidadeY: {velocityY / 1.5f}");
         bullet.setPositions(bulletSpawn.position);
