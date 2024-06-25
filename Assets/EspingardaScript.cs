@@ -9,7 +9,6 @@ public class EspingardaScript : MonoBehaviour
     public bulletScript bullet;
     public fireRate fireRate;
     public GameObject obj;
-    private Vector3 mouseVector;
     public float teste = 3f;
     public Camera mainCam;
     public float rotZ;
@@ -18,7 +17,7 @@ public class EspingardaScript : MonoBehaviour
     public Transform mainCharacter;
     public Vector3 rotation;
     // Start is called before the first frame update
-
+    public MouseBehavior mouseAngle;
     
     void Start()
     {
@@ -32,26 +31,8 @@ public class EspingardaScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        mouseVector = mainCam.ScreenToWorldPoint(Input.mousePosition);
-        rotation = mouseVector - transform.position;
-        Vector3 rotationCharacter = mouseVector - mainCharacter.transform.position;
-        rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
-        //Debug.Log($"Tangente A: {rotZ}");
-        rotCharacter = Mathf.Atan2(rotationCharacter.y, rotationCharacter.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, rotZ);
-        //Debug.Log(rotCharacter);
-        if ((rotCharacter >= 90 || rotCharacter <= -90) && mainCharacter.transform.localScale.x > 0)
-        {
-            mainCharacter.transform.localScale = new Vector3(-1 * mainCharacter.transform.localScale.x, mainCharacter.transform.localScale.y, mainCharacter.transform.localScale.z);
-            transform.localScale = new Vector3(-1 * transform.localScale.x, -1*transform.localScale.y, transform.localScale.z);
-
-        }
-        else if(mainCharacter.transform.localScale.x < 0 && (rotCharacter < 90 && rotCharacter > -90))
-        {
-            mainCharacter.transform.localScale = new Vector3(-1 * mainCharacter.transform.localScale.x, mainCharacter.transform.localScale.y, mainCharacter.transform.localScale.z);
-            transform.localScale = new Vector3(-1 * transform.localScale.x, -1*transform.localScale.y, transform.localScale.z);
-
-        }
+        mouseAngle = gameobject.AddComponent<MouseBehavior>();
+        mouseAngle.checkMouseAngle(transform, -1,-1);
         if (Input.GetAxis("Mouse Y") != 0)
         {
             //double resultado = Math.Sqrt(Math.Pow(Input.GetAxis("Mouse X") - transform.position.x, 2) + Math.Pow(Input.GetAxis("Mouse Y") - transform.position.y, 2));

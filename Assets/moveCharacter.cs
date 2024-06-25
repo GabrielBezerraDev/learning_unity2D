@@ -23,6 +23,7 @@ public class moveCharacter : MonoBehaviour
     //public collisionGround test2;
     public int amountJump = 0;
     // Start is called before the first frame update
+    public MouseBehavior mouseAngle;
     void Start()
     {
 
@@ -37,6 +38,8 @@ public class moveCharacter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        mouseAngle = gameobject.AddComponent<MouseBehavior>();
+        mouseAngle.checkMouseAngle(transform, -1,-1);
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A))
         {
             if (Input.GetKey(KeyCode.LeftShift) && horizontalVelocity < maxVelocity) {
