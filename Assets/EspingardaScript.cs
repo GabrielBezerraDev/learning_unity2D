@@ -52,7 +52,6 @@ public class EspingardaScript : MonoBehaviour
             transform.localScale = new Vector3(-1 * transform.localScale.x, -1*transform.localScale.y, transform.localScale.z);
 
         }
-        //Debug.Log(transform.rotation.z);
         if (Input.GetAxis("Mouse Y") != 0)
         {
             //double resultado = Math.Sqrt(Math.Pow(Input.GetAxis("Mouse X") - transform.position.x, 2) + Math.Pow(Input.GetAxis("Mouse Y") - transform.position.y, 2));
@@ -66,9 +65,6 @@ public class EspingardaScript : MonoBehaviour
                 setScriptBullet();
                 spawnBullet();
             }
-            //Debug.Log($"eixo x: {transform.rotation.x}");
-            //Debug.Log($"eixo y: {transform.rotation.y}");
-            //Debug.Log($"Tangente: {Math.Atan2(transform.rotation.y, transform.rotation.x) * Mathf.Rad2Deg}");
         }
     }
 
@@ -82,10 +78,6 @@ public class EspingardaScript : MonoBehaviour
     {
         float velocityY;
         float velocityX;
-        //Debug.Log($"Tangente A: {rotZ}");
-        //Debug.Log($"Tangente R: {rotZ * Mathf.Deg2Rad}");
-        //Debug.Log($"RotY: {rotation.normalized.y}");
-        //Debug.Log($"RotX: {rotation.normalized.x}");
         if (rotZ > 0)
         {
             if (rotZ > 0 && rotZ < 90)
@@ -120,7 +112,8 @@ public class EspingardaScript : MonoBehaviour
         bullet.setPositions(bulletSpawn.position);
         bullet.setRotation(0, 0, rotZ);
         bullet.settingUpTransformBullet();
-        bullet.setVelocity((velocityX/3f),(velocityY/3f));
+        bullet.setDamageBullet(3f);
+        bullet.setVelocity((velocityX/5f),(velocityY/5f));
 
     }
 

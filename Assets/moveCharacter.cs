@@ -17,7 +17,7 @@ public class moveCharacter : MonoBehaviour
     public int jumpValue = 3;
     public float horizontalVelocity = 3f;
     public int pixelBullet = 1;
-    public HealthBehavior healthCharacter;
+    public HealthBarScript healthCharacter;
     public float runVelocity;
     public float maxVelocity;
     //public collisionGround test2;
@@ -27,7 +27,7 @@ public class moveCharacter : MonoBehaviour
     {
 
         calculateVelocity();
-        healthCharacter = GameObject.FindGameObjectWithTag("health").GetComponent<HealthBehavior>();
+        healthCharacter = GameObject.FindGameObjectWithTag("health").GetComponent<HealthBarScript>();
         characterRb2D = GetComponent<Rigidbody2D>();
         playerCollision = GetComponent<Collider2D>();
         groundCollision = GameObject.FindGameObjectWithTag("ground").GetComponent<Collider2D>();
@@ -52,19 +52,16 @@ public class moveCharacter : MonoBehaviour
             characterRb2D.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical") * jumpValue);
             amountJump++;
         }
-        //if (Input.GetKey(KeyCode.R))
-        //{
-        //    if (fireRate.fireRatee(2f))
-        //    {
-        //        setScriptBullet();
-        //        spawnBullet();
-        //    }
-        //}
         if (Input.GetKey(KeyCode.T))
         {
             transform.position = new Vector3(-7.17f, -3.7f,0f);
             transform.rotation = Quaternion.identity;
             characterRb2D.velocity = new Vector3(0f,0f,0f);
+        }
+        if (Input.GetKeyUp(KeyCode.K))
+        {
+            GameObject teste = Resources.Load<GameObject>("Prefabs/BaseCharacter");
+            Instantiate(teste, Vector3.zero, Quaternion.identity);
         }
     }
 

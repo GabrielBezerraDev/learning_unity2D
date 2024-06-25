@@ -26,6 +26,7 @@ public class bulletScript : MonoBehaviour
     private void Update()
     {
         transform.right = this.GetComponent<Rigidbody2D>().velocity;
+        //this.AddComponent<TemplateCharacter>();
         destroyObject();
     }
 
@@ -68,6 +69,7 @@ public class bulletScript : MonoBehaviour
         //Debug.Log($"Essa � a for�a do eixoY: {10000f * transform.rotation.z}");
         //this.GetComponent<Rigidbody2D>().AddForce(new Vector2(this.velocityX * this.rotationGun * 230f, this.velocityX * (this.rotationGun*200f)));
         rbBullet2D.velocity = new Vector3(velocityX, velocityY, 0);
+        //rbBullet2D.velocity = transform.right * vezes alguma coisa;
         //rbBullet2D.AddForce(new Vector2(velocityX,velocityY));
 
         //this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionY;
