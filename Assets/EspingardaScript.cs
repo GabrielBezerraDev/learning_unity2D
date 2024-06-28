@@ -1,8 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Properties;
+using Unity.VisualScripting;
 using UnityEngine;
+
 
 public class EspingardaScript : MonoBehaviour
 {
@@ -18,11 +16,14 @@ public class EspingardaScript : MonoBehaviour
     public Vector3 rotation;
     // Start is called before the first frame update
     public MouseBehavior mouseAngle;
+    public ThrowBehavior velocityBullet; 
     
     void Start()
     {
         mainCharacter = GameObject.FindGameObjectWithTag("mainCharacter").GetComponent<Transform>();
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        mouseAngle = this.AddComponent<MouseBehavior>();
+        velocityBullet = this.AddComponent<ThrowBehavior>();
         getFireRate();
 
     }
@@ -31,8 +32,8 @@ public class EspingardaScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        mouseAngle = gameobject.AddComponent<MouseBehavior>();
-        mouseAngle.checkMouseAngle(transform, -1,-1);
+        mouseAngle.setScale(transform, -1,-1);
+        mouseAngle.setAngleObject(transform);
         if (Input.GetAxis("Mouse Y") != 0)
         {
             //double resultado = Math.Sqrt(Math.Pow(Input.GetAxis("Mouse X") - transform.position.x, 2) + Math.Pow(Input.GetAxis("Mouse Y") - transform.position.y, 2));
@@ -57,14 +58,14 @@ public class EspingardaScript : MonoBehaviour
 
     public void spawnBullet()
     {
-
-        Debug.Log($"VelocidadeX: {velocityX / 1.5f}"); 
-        Debug.Log($"VelocidadeY: {velocityY / 1.5f}");
+        float[] velocitys = velocityBullet.getSpeedRelativeToTheMouse(rotZ);
+        // Debug.Log($"VelocidadeX: {velocitys[0] / 1.5f}"); 
+        // Debug.Log($"VelocidadeY: {velocitys[1] / 1.5f}");
         bullet.setPositions(bulletSpawn.position);
         bullet.setRotation(0, 0, rotZ);
         bullet.settingUpTransformBullet();
         bullet.setDamageBullet(3f);
-        bullet.setVelocity((velocityX/5f),(velocityY/5f));
+        bullet.setVelocity((velocitys[0] / 5f),(velocitys[1] / 5f));
 
     }
 

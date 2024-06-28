@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Assertions.Must;
+using UnityEngine.UI;
 
 public class moveCharacter : MonoBehaviour
 {
@@ -24,10 +25,16 @@ public class moveCharacter : MonoBehaviour
     public int amountJump = 0;
     // Start is called before the first frame update
     public MouseBehavior mouseAngle;
+
+    private void Awake() {
+        addComponentsInMainCharacter();
+        setSliderHealth();
+    }
     void Start()
     {
-        addComponentsInMainCharacter();
+        getComponentsInMainCharacter();
         calculateVelocity();
+        getGround();
     }
 
     // Update is called once per frame
@@ -40,6 +47,15 @@ public class moveCharacter : MonoBehaviour
     }
 
     public void addComponentsInMainCharacter(){
+        mouseAngle = this.AddComponent<MouseBehavior>();
+        healthCharacter = this.AddComponent<HealthBarScript>();
+    }
+
+    public void setSliderHealth(){
+        healthCharacter.setSlider(gameObject.GetComponentInChildren<Canvas>().GetComponentInChildren<Slider>());
+    }
+
+    public void getComponentsInMainCharacter(){
         characterRb2D = GetComponent<Rigidbody2D>();
         playerCollision = GetComponent<Collider2D>();
     }
@@ -94,8 +110,7 @@ public class moveCharacter : MonoBehaviour
     }
 
     public void setCharacterLookAngle(){
-        mouseAngle = gameobject.AddComponent<MouseBehavior>();
-        mouseAngle.checkMouseAngle(transform, -1,-1);   
+        mouseAngle.setScale(transform, -1,1);   
     }
 
     public void calculateVelocity()
@@ -121,14 +136,6 @@ public class moveCharacter : MonoBehaviour
             calculateVelocity();
             jumpValue = 7;
             Destroy(collision.gameObject);
-        }
-        if (collision.gameObject.GetComponent<bulletScript>())
-        {
-            bulletScript bullet = collision.gameObject.GetComponent<bulletScript>();
-            if (bullet.damage > 0)
-            {
-                this.healthCharacter.damageCharacter(bullet.damage);
-            }
         }
 
     }
