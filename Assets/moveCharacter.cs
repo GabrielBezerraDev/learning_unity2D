@@ -20,6 +20,7 @@ public class moveCharacter : MonoBehaviour
     public int pixelBullet = 1;
     public HealthBarScript healthCharacter;
     public float runVelocity;
+    public Inventory inventory;
     public float maxVelocity;
     //public collisionGround test2;
     public int amountJump = 0;
@@ -44,11 +45,13 @@ public class moveCharacter : MonoBehaviour
         playerIsMove();
         playerIsJump();
         resetCharacterDefaultPosition();
+        
     }
 
     public void addComponentsInMainCharacter(){
         mouseAngle = this.AddComponent<MouseBehavior>();
         healthCharacter = this.AddComponent<HealthBarScript>();
+        inventory = this.AddComponent<Inventory>();
     }
 
     public void setSliderHealth(){
@@ -137,6 +140,18 @@ public class moveCharacter : MonoBehaviour
             jumpValue = 7;
             Destroy(collision.gameObject);
         }
+        // Debug.Log(collision.gameObject.transform.tag);
+        if (collision.gameObject.transform.tag == "item")
+        {
+            Debug.Log(collision.gameObject.GetComponent<ItemBehavior>().getPosition());
+            inventory.AddInventoryItem(collision.gameObject);
+            collision.gameObject.GetComponent<ItemBehavior>().setParent(transform);
+            collision.gameObject.GetComponent<ItemBehavior>().isEquiped = true;
+            collision.gameObject.transform.position = collision.gameObject.GetComponent<ItemBehavior>().getPosition();
+            Debug.Log(collision.gameObject.transform.position);
+            Debug.Log(collision.gameObject.GetComponent<ItemBehavior>().getPosition());
+        }
+        
 
     }
 }

@@ -22,7 +22,6 @@ public class MouseBehavior : MonoBehaviour
     void Update()
     {
         setMouseAngle();
-        Debug.Log(rotZ);
     }
 
     public void setMouseAngle(){

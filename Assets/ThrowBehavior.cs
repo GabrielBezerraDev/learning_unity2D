@@ -2,19 +2,25 @@ using UnityEngine;
 
 public class ThrowBehavior : MonoBehaviour
 {
-    public float velocityY;
-    public float velocityX;
+    public float velocityY = 0;
+    public float velocityX = 0;
 
     public float[] getSpeedRelativeToTheMouse(float rotz)
     {
         rotz = MouseBehavior.rotZ;
         checkQuadrant(rotz);
-        float[] velocitys = { velocityX, velocityY};
+        float[] velocitys = {velocityX, velocityY};
         return velocitys;
+    }
+
+    public void resetVelocitys(){
+        velocityX = 0;
+        velocityY = 0;
     }
 
     public void checkQuadrant(float rotz)
     {
+        resetVelocitys();
         if (rotz > 0)
         {
             mouseIsFirstQuadrantOrSecond(rotz);
@@ -29,11 +35,13 @@ public class ThrowBehavior : MonoBehaviour
     {
         if (rotz > 0 && rotz < 90)
         {
-            setVelocity(90f, 0, rotz, rotz, 1f, 1f, false);
+            Debug.Log("Primeiro quadrante");
+            setVelocity(90f, 0, rotz, -rotz, 1f, 1f, false);
         }
         else
         {
-            setVelocity(90f, 90f, rotz, 0, -1f, 1f, true);
+            Debug.Log("Segundo quadrante");
+            setVelocity(-90f, 0, -rotz, 0, -1f, 1f, true);
         }
     }
 
@@ -41,11 +49,13 @@ public class ThrowBehavior : MonoBehaviour
     {
         if (rotz < 0 && rotz > -90)
         {
-            setVelocity(90f, 0, -rotz, rotz, 1f, 1f, false);
+            Debug.Log("Quarto quadrante");
+            setVelocity(90f, 0, -rotz, rotz, 1f, -1f, false);
         }
         else
         {
-            setVelocity(90f, 90f, -rotz, 0, -1f, -1f, true);
+            Debug.Log("Terceiro quadrante");
+            setVelocity(-90f, 90f, rotz, 0, -1f, -1f, true);
         }
     }
 
@@ -59,12 +69,13 @@ public class ThrowBehavior : MonoBehaviour
         bool minusYByX
     )
     {
-        velocityX = (angleCircleX - rotzToX) * signX;
-        velocityY = (angleCircleY - rotzToY) * signY;
-        if (minusYByX)
-        {
-            velocityY -= velocityX;
+        velocityX = angleCircleX - rotzToX;
+        if (minusYByX) velocityY = 90 - velocityX;
+        else{
+            velocityY = angleCircleY - rotzToY;
         }
+        velocityX *= signX;
+        velocityY *= signY;
     }
 }
 

@@ -17,13 +17,19 @@ public class EspingardaScript : MonoBehaviour
     // Start is called before the first frame update
     public MouseBehavior mouseAngle;
     public ThrowBehavior velocityBullet; 
+
+    public ItemBehavior itemBehavior;
+
+    public Vector3 positionInMainCharacter = new Vector3(-0.031f,-0.055f,0);
     
     void Start()
     {
         mainCharacter = GameObject.FindGameObjectWithTag("mainCharacter").GetComponent<Transform>();
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         mouseAngle = this.AddComponent<MouseBehavior>();
+        itemBehavior = this.AddComponent<ItemBehavior>();
         velocityBullet = this.AddComponent<ThrowBehavior>();
+        itemBehavior.setPosition(positionInMainCharacter);
         getFireRate();
 
     }
@@ -32,6 +38,7 @@ public class EspingardaScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // if(!itemBehavior.isEquiped) return;
         mouseAngle.setScale(transform, -1,-1);
         mouseAngle.setAngleObject(transform);
         if (Input.GetAxis("Mouse Y") != 0)
@@ -59,13 +66,11 @@ public class EspingardaScript : MonoBehaviour
     public void spawnBullet()
     {
         float[] velocitys = velocityBullet.getSpeedRelativeToTheMouse(rotZ);
-        // Debug.Log($"VelocidadeX: {velocitys[0] / 1.5f}"); 
-        // Debug.Log($"VelocidadeY: {velocitys[1] / 1.5f}");
         bullet.setPositions(bulletSpawn.position);
         bullet.setRotation(0, 0, rotZ);
         bullet.settingUpTransformBullet();
-        bullet.setDamageBullet(3f);
-        bullet.setVelocity((velocitys[0] / 5f),(velocitys[1] / 5f));
+        bullet.setDamageBullet(50f);
+        bullet.setVelocity((velocitys[0] / 3f),(velocitys[1] / 3f));
 
     }
 

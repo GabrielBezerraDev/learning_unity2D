@@ -19,7 +19,9 @@ public class UIscript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.L)) image.gameObject.SetActive(true);
+        if (Input.GetKeyUp(KeyCode.L)) {
+            image.gameObject.SetActive(true);
+        }
     }
 
     private void createObject()
@@ -40,23 +42,23 @@ public class UIscript : MonoBehaviour
     //    // Carrega o prefab do Resources
     //    GameObject newObject = Resources.Load<GameObject>($"Prefabs/BaseCharacter");
 
-    //    // Instancia o prefab na posição zero com rotação padrão
+    //    // Instancia o prefab na posiï¿½ï¿½o zero com rotaï¿½ï¿½o padrï¿½o
     //    GameObject instantiatedObject = Instantiate(newObject, Vector3.zero, Quaternion.identity);
 
     //    // Esconde a imagem associada
     //    image.gameObject.SetActive(false);
 
-    //    // Obtém o componente BaseCharacter do GameObject instanciado
+    //    // Obtï¿½m o componente BaseCharacter do GameObject instanciado
     //    BaseCharacter baseCharacterComponent = instantiatedObject.GetComponent<BaseCharacter>();
 
-    //    // Verifica se o componente BaseCharacter foi encontrado e chama a função setSprite
+    //    // Verifica se o componente BaseCharacter foi encontrado e chama a funï¿½ï¿½o setSprite
     //    if (baseCharacterComponent != null)
     //    {
     //        baseCharacterComponent.setSprite(teste);
     //    }
     //    else
     //    {
-    //        Debug.LogError("O componente BaseCharacter não foi encontrado no prefab instanciado.");
+    //        Debug.LogError("O componente BaseCharacter nï¿½o foi encontrado no prefab instanciado.");
     //    }
     //}
 
