@@ -24,6 +24,8 @@ public class moveCharacter : MonoBehaviour
     public float maxVelocity;
     //public collisionGround test2;
     public int amountJump = 0;
+    public GameObject gameObjectCollider;
+    public ItemBehavior itemBehavior;
     // Start is called before the first frame update
     public MouseBehavior mouseAngle;
 
@@ -63,6 +65,10 @@ public class moveCharacter : MonoBehaviour
         playerCollision = GetComponent<Collider2D>();
     }
 
+    public void getItemBehaviorInGameObjectCollider(){
+        itemBehavior = gameObjectColiider.GetComponent<ItemBehavior>();
+    }
+
     public void getGround(){
         groundCollision = GameObject.FindGameObjectWithTag("ground").GetComponent<Collider2D>();
     }
@@ -73,11 +79,15 @@ public class moveCharacter : MonoBehaviour
 
     public void playerIsRunner(){
         if (Input.GetKey(KeyCode.LeftShift) && horizontalVelocity < maxVelocity) {
-            horizontalVelocity += runVelocity; 
+            modifyRunHorizontalVelocity(runVelocity);
         }else if (!Input.GetKey(KeyCode.LeftShift) && horizontalVelocity == maxVelocity)
         {
-            horizontalVelocity -= runVelocity;
+            modifyRunHorizontalVelocity(-runVelocity);
         }
+    }
+
+    public void modifyRunHorizontalVelocity(float runVelocity){
+            horizontalVelocity += runVelocity;
     }
 
     public void playerIsMove(){
@@ -131,25 +141,34 @@ public class moveCharacter : MonoBehaviour
         amountJump++;
     }
 
+    public void increaseHorizontalVelocity(float velocity){
+        horizontalVelocity = 9;
+    }
+
+    public void increaseJumpValue(float velocity){
+        jumpValue = velocity;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.transform.tag == "jumpPowerUp")
+        gameObjectCollider = collision.gameObject;
+        string tagCollider = gameObject.tag;
+        if (tagCollider == "jumpPowerUp")
         {
-            horizontalVelocity = 9;
+            increaseVelocity(9f);
+            increaseJumpValue(7f);
             calculateVelocity();
-            jumpValue = 7;
-            Destroy(collision.gameObject);
+            Destroy(gameObjectColiider);
         }
-        // Debug.Log(collision.gameObject.transform.tag);
-        if (collision.gameObject.transform.tag == "item")
+        if (tagCollider == "item")
         {
-            Debug.Log(collision.gameObject.GetComponent<ItemBehavior>().getPosition());
+            getItemBehaviorInGameObjectCollider(); 
             inventory.AddInventoryItem(collision.gameObject);
-            collision.gameObject.GetComponent<ItemBehavior>().setParent(transform);
-            collision.gameObject.GetComponent<ItemBehavior>().isEquiped = true;
-            collision.gameObject.transform.position = collision.gameObject.GetComponent<ItemBehavior>().getPosition();
-            Debug.Log(collision.gameObject.transform.position);
-            Debug.Log(collision.gameObject.GetComponent<ItemBehavior>().getPosition());
+            itemBehavior.setParent(transform);
+            itemBehavior.isEquiped = true;
+            gameObjectCollider = itemBehavior.getPosition();
+            Debug.Log(gameObjectCollider);
+            Debug.Log(itemBehavior.getPosition());
         }
         
 
