@@ -6,7 +6,7 @@ public class ItemBehavior: MonoBehaviour, ProtocolItem {
     public bool isEquiped {get;set;} = false;
     public Vector3 coordenatesPosition;
     public void setParent(Transform parent){
-        this.transform.parent = parent;
+        transform.parent = parent;
     }
 
     public void setPosition(Vector3 postion){

@@ -15,7 +15,7 @@ public class moveCharacter : MonoBehaviour
     [SerializeField]
     public fireRate fireRate;
     public bulletScript testBullet;
-    public int jumpValue = 3;
+    public float jumpValue = 3;
     public float horizontalVelocity = 3f;
     public int pixelBullet = 1;
     public HealthBarScript healthCharacter;
@@ -66,7 +66,7 @@ public class moveCharacter : MonoBehaviour
     }
 
     public void getItemBehaviorInGameObjectCollider(){
-        itemBehavior = gameObjectColiider.GetComponent<ItemBehavior>();
+        itemBehavior = gameObjectCollider.GetComponent<ItemBehavior>();
     }
 
     public void getGround(){
@@ -126,6 +126,10 @@ public class moveCharacter : MonoBehaviour
         mouseAngle.setScale(transform, -1,1);   
     }
 
+    public IEnumerator setObjectIntoInMainCharacter(){
+        gameObjectCollider.transform.position = itemBehavior.getPosition();
+        yield return new WaitForSeconds(3f);
+    }
     public void calculateVelocity()
     {
         runVelocity = (horizontalVelocity * 40) / 100;
@@ -142,7 +146,7 @@ public class moveCharacter : MonoBehaviour
     }
 
     public void increaseHorizontalVelocity(float velocity){
-        horizontalVelocity = 9;
+        horizontalVelocity = velocity;
     }
 
     public void increaseJumpValue(float velocity){
@@ -152,13 +156,14 @@ public class moveCharacter : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         gameObjectCollider = collision.gameObject;
-        string tagCollider = gameObject.tag;
+        string tagCollider = collision.gameObject.tag;
+        Debug.Log(gameObjectCollider);
         if (tagCollider == "jumpPowerUp")
         {
-            increaseVelocity(9f);
+            increaseHorizontalVelocity(9f);
             increaseJumpValue(7f);
             calculateVelocity();
-            Destroy(gameObjectColiider);
+            Destroy(gameObjectCollider);
         }
         if (tagCollider == "item")
         {
@@ -166,7 +171,7 @@ public class moveCharacter : MonoBehaviour
             inventory.AddInventoryItem(collision.gameObject);
             itemBehavior.setParent(transform);
             itemBehavior.isEquiped = true;
-            gameObjectCollider = itemBehavior.getPosition();
+            StartCoroutine(setObjectIntoInMainCharacter());
             Debug.Log(gameObjectCollider);
             Debug.Log(itemBehavior.getPosition());
         }

@@ -14,9 +14,11 @@ public class EspingardaScript : MonoBehaviour
     public Transform bulletSpawn;
     public Transform mainCharacter;
     public Vector3 rotation;
-    // Start is called before the first frame update
+
     public MouseBehavior mouseAngle;
     public ThrowBehavior velocityBullet; 
+
+    public bool isEquiped = false;
 
     public ItemBehavior itemBehavior;
 
@@ -30,6 +32,7 @@ public class EspingardaScript : MonoBehaviour
         itemBehavior = this.AddComponent<ItemBehavior>();
         velocityBullet = this.AddComponent<ThrowBehavior>();
         itemBehavior.setPosition(positionInMainCharacter);
+        itemBehavior.isEquiped = isEquiped;
         getFireRate();
 
     }
@@ -38,7 +41,7 @@ public class EspingardaScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // if(!itemBehavior.isEquiped) return;
+        if(!itemBehavior.isEquiped) return;
         mouseAngle.setScale(transform, -1,-1);
         mouseAngle.setAngleObject(transform);
         if (Input.GetAxis("Mouse Y") != 0)

@@ -18,6 +18,7 @@ public class Inventory : MonoBehaviour
             item = new ItemInventory(slot.GetComponent<Image>());
             inventoryItems.Add(item);
         }
+        // Debug.Log($"Quantidade de slots no inventory: {inventoryItems.Count} ");
     }
 
     // Update is called once per frame
@@ -28,15 +29,14 @@ public class Inventory : MonoBehaviour
 
     public void AddInventoryItem(GameObject item){
         foreach(ItemInventory slotItem in inventoryItems){
-            Debug.Log(slotItem.item);
             if(!slotItem.item && !item.GetComponent<ProtocolItem>().isContainedInInvetory) {
-                Debug.Log("Entrou na condicional");
+                // Debug.Log("Entrou na condicional");
                 item.GetComponent<ProtocolItem>().isContainedInInvetory = true;
                 slotItem.item = item;
                 slotItem.spriteItem.sprite = item.GetComponent<SpriteRenderer>().sprite;
                 break;
             }else{
-                Debug.Log("Não entrou na condicional");
+                // Debug.Log("Não entrou na condicional");
             }; 
         }
 
