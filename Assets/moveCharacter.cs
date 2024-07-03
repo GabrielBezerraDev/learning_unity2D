@@ -131,7 +131,8 @@ public class moveCharacter : MonoBehaviour, ProtocolCharacter
     }
 
     public void setObjectIntoInMainCharacter(){
-        gameObject.transform.GetChild(transform.childCount-1).localPosition = itemBehavior.getPosition();
+        Debug.Log(itemBehavior.getPosition());
+        gameObjectCollider.transform.localPosition = itemBehavior.getPosition();
     }
     public void calculateVelocity()
     {
@@ -174,7 +175,7 @@ public class moveCharacter : MonoBehaviour, ProtocolCharacter
             Debug.Log(gameObjectCollider);
             getItemBehaviorInGameObjectCollider(); 
             Debug.Log($"Existe esse objeto: {itemBehavior}");
-            inventory.AddInventoryItem(collision.gameObject);
+            inventory.AddInventoryItem(gameObjectCollider);
             itemBehavior.setParent(transform);
             itemBehavior.isEquiped = true;
             setObjectIntoInMainCharacter();

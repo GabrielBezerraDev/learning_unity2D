@@ -9,13 +9,16 @@ public class Inventory : MonoBehaviour
 {   
     public ItemInventory item;
     public List<ItemInventory> inventoryItems = new List<ItemInventory>();
-    public List<GameObject> slotsInventory = new List<GameObject>();
+    public List<Image> imagesItems = new List<Image>();
+
+    public GameObject slotsInventory;
     // Start is called before the first frame update
     void Start()
     {
-        slotsInventory =  GameObject.FindGameObjectsWithTag("itemInventory").ToList();
-        foreach (GameObject slot in slotsInventory){
-            item = new ItemInventory(slot.GetComponent<Image>());
+        // slotsInventory =  GameObject.FindGameObjectsWithTag("itemInventory").ToList();
+        getChildrens();
+        foreach (Image image in imagesItems){
+            item = new ItemInventory(image);
             inventoryItems.Add(item);
         }
         // Debug.Log($"Quantidade de slots no inventory: {inventoryItems.Count} ");
@@ -37,6 +40,15 @@ public class Inventory : MonoBehaviour
             }
         }
 
+    }
+
+    public void getChildrens(){
+        slotsInventory = GameObject.FindGameObjectWithTag("slots");
+        Debug.Log(slotsInventory.transform.childCount);
+        for(int i = 0; i < slotsInventory.transform.childCount; i++){
+            Debug.Log(slotsInventory.transform.GetChild(i).transform.GetChild(0).GetComponent<Image>());
+            imagesItems.Add(slotsInventory.transform.GetChild(i).transform.GetChild(0).GetComponent<Image>());
+        }
     }
 
 

@@ -11,6 +11,7 @@ TagManager:
   - ground
   - itemInventory
   - item
+  - slots
   layers:
   - Default
   - TransparentFX
