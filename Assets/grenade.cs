@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class grenade : MonoBehaviour, ProtocolItem
+public class grenade : MonoBehaviour
 {
-    public bool isContainedInInvetory {get;set;} = false;
-    public bool isEquiped {get;set;} = false;
     public ItemBehavior itemBehavior;
     // Start is called before the first frame update
 
     private void Awake() {
-        itemBehavior = this.AddComponent<ItemBehavior>();
+        itemBehavior = gameObject.AddComponent<ItemBehavior>();
     }
     void Start()
     {

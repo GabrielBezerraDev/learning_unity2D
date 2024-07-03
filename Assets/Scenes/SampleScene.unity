@@ -385,7 +385,7 @@ Transform:
   m_GameObject: {fileID: 89406200}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.16, y: -1.9, z: 0}
+  m_LocalPosition: {x: -10.08, y: -2.17, z: 0}
   m_LocalScale: {x: 0.10985929, y: 0.09017704, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -551,8 +551,8 @@ Transform:
   m_GameObject: {fileID: 117310423}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.2902, y: -3.3867, z: 175.23395}
-  m_LocalScale: {x: 2.1187494, y: 2.1187494, z: 2.1187494}
+  m_LocalPosition: {x: -7.99, y: -1.789, z: 175.23395}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -816,7 +816,7 @@ GameObject:
   - component: {fileID: 198325492}
   m_Layer: 5
   m_Name: Image
-  m_TagString: itemInventory
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -853,7 +853,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.0013728142, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -878,83 +878,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 198325490}
   m_CullTransparentMesh: 1
---- !u!1001 &207227743
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 944617365059564972, guid: 4b1b1e9729992aa4a8e0d66c1061010c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -5.12
-      objectReference: {fileID: 0}
-    - target: {fileID: 944617365059564972, guid: 4b1b1e9729992aa4a8e0d66c1061010c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -3.67
-      objectReference: {fileID: 0}
-    - target: {fileID: 944617365059564972, guid: 4b1b1e9729992aa4a8e0d66c1061010c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 944617365059564972, guid: 4b1b1e9729992aa4a8e0d66c1061010c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 944617365059564972, guid: 4b1b1e9729992aa4a8e0d66c1061010c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 944617365059564972, guid: 4b1b1e9729992aa4a8e0d66c1061010c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 944617365059564972, guid: 4b1b1e9729992aa4a8e0d66c1061010c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 944617365059564972, guid: 4b1b1e9729992aa4a8e0d66c1061010c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 944617365059564972, guid: 4b1b1e9729992aa4a8e0d66c1061010c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 944617365059564972, guid: 4b1b1e9729992aa4a8e0d66c1061010c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4840370952065896015, guid: 4b1b1e9729992aa4a8e0d66c1061010c, type: 3}
-      propertyPath: m_Name
-      value: Espingarda
-      objectReference: {fileID: 0}
-    - target: {fileID: 4840370952065896015, guid: 4b1b1e9729992aa4a8e0d66c1061010c, type: 3}
-      propertyPath: m_TagString
-      value: item
-      objectReference: {fileID: 0}
-    - target: {fileID: 7570229465917985026, guid: 4b1b1e9729992aa4a8e0d66c1061010c, type: 3}
-      propertyPath: m_Size.x
-      value: 0.6514971
-      objectReference: {fileID: 0}
-    - target: {fileID: 7570229465917985026, guid: 4b1b1e9729992aa4a8e0d66c1061010c, type: 3}
-      propertyPath: m_Size.y
-      value: 0.12713666
-      objectReference: {fileID: 0}
-    - target: {fileID: 7570229465917985026, guid: 4b1b1e9729992aa4a8e0d66c1061010c, type: 3}
-      propertyPath: m_Offset.x
-      value: -0.005949989
-      objectReference: {fileID: 0}
-    - target: {fileID: 7570229465917985026, guid: 4b1b1e9729992aa4a8e0d66c1061010c, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.017538406
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4b1b1e9729992aa4a8e0d66c1061010c, type: 3}
 --- !u!1 &231748731
 GameObject:
   m_ObjectHideFlags: 0
@@ -1123,7 +1046,7 @@ GameObject:
   - component: {fileID: 311017252}
   m_Layer: 5
   m_Name: Image
-  m_TagString: itemInventory
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1160,7 +1083,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.0013728142, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1456,7 +1379,7 @@ GameObject:
   - component: {fileID: 404742485}
   m_Layer: 5
   m_Name: Image
-  m_TagString: itemInventory
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1493,7 +1416,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.0013728142, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1724,7 +1647,7 @@ GameObject:
   - component: {fileID: 448142712}
   m_Layer: 5
   m_Name: Image
-  m_TagString: itemInventory
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1761,7 +1684,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.0013728142, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1786,6 +1709,79 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 448142710}
   m_CullTransparentMesh: 1
+--- !u!1001 &455306289
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 944617365059564972, guid: 4b1b1e9729992aa4a8e0d66c1061010c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.9958525
+      objectReference: {fileID: 0}
+    - target: {fileID: 944617365059564972, guid: 4b1b1e9729992aa4a8e0d66c1061010c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.7459092
+      objectReference: {fileID: 0}
+    - target: {fileID: 944617365059564972, guid: 4b1b1e9729992aa4a8e0d66c1061010c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 944617365059564972, guid: 4b1b1e9729992aa4a8e0d66c1061010c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 944617365059564972, guid: 4b1b1e9729992aa4a8e0d66c1061010c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 944617365059564972, guid: 4b1b1e9729992aa4a8e0d66c1061010c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 944617365059564972, guid: 4b1b1e9729992aa4a8e0d66c1061010c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 944617365059564972, guid: 4b1b1e9729992aa4a8e0d66c1061010c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 944617365059564972, guid: 4b1b1e9729992aa4a8e0d66c1061010c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 944617365059564972, guid: 4b1b1e9729992aa4a8e0d66c1061010c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4840370952065896015, guid: 4b1b1e9729992aa4a8e0d66c1061010c, type: 3}
+      propertyPath: m_Name
+      value: Espingarda
+      objectReference: {fileID: 0}
+    - target: {fileID: 7570229465917985026, guid: 4b1b1e9729992aa4a8e0d66c1061010c, type: 3}
+      propertyPath: m_Size.x
+      value: 0.6046751
+      objectReference: {fileID: 0}
+    - target: {fileID: 7570229465917985026, guid: 4b1b1e9729992aa4a8e0d66c1061010c, type: 3}
+      propertyPath: m_Size.y
+      value: 0.1210514
+      objectReference: {fileID: 0}
+    - target: {fileID: 7570229465917985026, guid: 4b1b1e9729992aa4a8e0d66c1061010c, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.00681594
+      objectReference: {fileID: 0}
+    - target: {fileID: 7570229465917985026, guid: 4b1b1e9729992aa4a8e0d66c1061010c, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.011667274
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4b1b1e9729992aa4a8e0d66c1061010c, type: 3}
 --- !u!1 &459145968
 GameObject:
   m_ObjectHideFlags: 0
@@ -1903,7 +1899,7 @@ GameObject:
   - component: {fileID: 497457817}
   m_Layer: 5
   m_Name: Image
-  m_TagString: itemInventory
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1940,7 +1936,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.0013728142, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3460,7 +3456,7 @@ GameObject:
   - component: {fileID: 1000777963}
   m_Layer: 0
   m_Name: Canvas
-  m_TagString: item
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3637,7 +3633,7 @@ GameObject:
   - component: {fileID: 1013499352}
   m_Layer: 5
   m_Name: Image
-  m_TagString: itemInventory
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3674,7 +3670,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.0013728142, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5090,7 +5086,7 @@ GameObject:
   - component: {fileID: 1663607901}
   m_Layer: 5
   m_Name: Image
-  m_TagString: itemInventory
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5127,7 +5123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.0013728142, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5337,7 +5333,7 @@ GameObject:
   - component: {fileID: 1720953248}
   m_Layer: 5
   m_Name: Image
-  m_TagString: itemInventory
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5374,7 +5370,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.0013728142, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6061,7 +6057,7 @@ GameObject:
   - component: {fileID: 1987355400}
   m_Layer: 5
   m_Name: Image
-  m_TagString: itemInventory
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6098,7 +6094,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.0013728142, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6667,4 +6663,4 @@ SceneRoots:
   - {fileID: 1451310645}
   - {fileID: 1072559713}
   - {fileID: 117310426}
-  - {fileID: 207227743}
+  - {fileID: 455306289}

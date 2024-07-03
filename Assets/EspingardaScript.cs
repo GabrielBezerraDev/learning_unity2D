@@ -22,7 +22,7 @@ public class EspingardaScript : MonoBehaviour
 
     public ItemBehavior itemBehavior;
 
-    public Vector3 positionInMainCharacter = new Vector3(-0.031f,-0.055f,0);
+    public Vector3 positionInMainCharacter = new Vector3(-0.03f,-0.038f,0);
     
     void Start()
     {

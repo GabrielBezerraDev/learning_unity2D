@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Assertions.Must;
 using UnityEngine.UI;
 
-public class moveCharacter : MonoBehaviour
+public class moveCharacter : MonoBehaviour, ProtocolCharacter
 {
     private Rigidbody2D characterRb2D;
     private float nextFireTime = 0f;
@@ -126,9 +126,12 @@ public class moveCharacter : MonoBehaviour
         mouseAngle.setScale(transform, -1,1);   
     }
 
-    public IEnumerator setObjectIntoInMainCharacter(){
-        gameObjectCollider.transform.position = itemBehavior.getPosition();
-        yield return new WaitForSeconds(3f);
+    public void setGameObjectCollider(GameObject gameObjectCollider){
+        this.gameObjectCollider =  gameObjectCollider;
+    }
+
+    public void setObjectIntoInMainCharacter(){
+        gameObject.transform.GetChild(transform.childCount-1).localPosition = itemBehavior.getPosition();
     }
     public void calculateVelocity()
     {
@@ -155,11 +158,11 @@ public class moveCharacter : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        gameObjectCollider = collision.gameObject;
         string tagCollider = collision.gameObject.tag;
-        Debug.Log(gameObjectCollider);
         if (tagCollider == "jumpPowerUp")
         {
+            setGameObjectCollider(collision.gameObject);
+            Debug.Log(gameObjectCollider);
             increaseHorizontalVelocity(9f);
             increaseJumpValue(7f);
             calculateVelocity();
@@ -167,11 +170,14 @@ public class moveCharacter : MonoBehaviour
         }
         if (tagCollider == "item")
         {
+            setGameObjectCollider(collision.gameObject);
+            Debug.Log(gameObjectCollider);
             getItemBehaviorInGameObjectCollider(); 
+            Debug.Log($"Existe esse objeto: {itemBehavior}");
             inventory.AddInventoryItem(collision.gameObject);
             itemBehavior.setParent(transform);
             itemBehavior.isEquiped = true;
-            StartCoroutine(setObjectIntoInMainCharacter());
+            setObjectIntoInMainCharacter();
             Debug.Log(gameObjectCollider);
             Debug.Log(itemBehavior.getPosition());
         }
