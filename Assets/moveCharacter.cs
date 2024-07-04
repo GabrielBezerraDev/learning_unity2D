@@ -131,7 +131,6 @@ public class moveCharacter : MonoBehaviour, ProtocolCharacter
     }
 
     public void setObjectIntoInMainCharacter(){
-        Debug.Log(itemBehavior.getPosition());
         gameObjectCollider.transform.localPosition = itemBehavior.getPosition();
     }
     public void calculateVelocity()
@@ -163,7 +162,6 @@ public class moveCharacter : MonoBehaviour, ProtocolCharacter
         if (tagCollider == "jumpPowerUp")
         {
             setGameObjectCollider(collision.gameObject);
-            Debug.Log(gameObjectCollider);
             increaseHorizontalVelocity(9f);
             increaseJumpValue(7f);
             calculateVelocity();
@@ -174,13 +172,11 @@ public class moveCharacter : MonoBehaviour, ProtocolCharacter
             setGameObjectCollider(collision.gameObject);
             Debug.Log(gameObjectCollider);
             getItemBehaviorInGameObjectCollider(); 
-            Debug.Log($"Existe esse objeto: {itemBehavior}");
             inventory.AddInventoryItem(gameObjectCollider);
             itemBehavior.setParent(transform);
             itemBehavior.isEquiped = true;
             setObjectIntoInMainCharacter();
-            Debug.Log(gameObjectCollider);
-            Debug.Log(itemBehavior.getPosition());
+            gameObjectCollider.SetActive(false);
         }
         
 
