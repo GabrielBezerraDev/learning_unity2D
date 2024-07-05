@@ -172,6 +172,9 @@ public class moveCharacter : MonoBehaviour, ProtocolCharacter
             setGameObjectCollider(collision.gameObject);
             Debug.Log(gameObjectCollider);
             getItemBehaviorInGameObjectCollider(); 
+            inventory.setSlotPosition(itemBehavior.getSlotPosition());
+            inventory.setSlotScale(itemBehavior.getSlotScale());
+            inventory.setSlotRotation(itemBehavior.getSlotRotation());
             inventory.AddInventoryItem(gameObjectCollider);
             itemBehavior.setParent(transform);
             itemBehavior.isEquiped = true;

@@ -21,8 +21,10 @@ public class EspingardaScript : MonoBehaviour
     public bool isEquiped = false;
 
     public ItemBehavior itemBehavior;
+    private Vector3 slotPosition = new Vector3(5.209733e-05f,7.8f,0);
+    private Vector3 slotScale = new Vector3(1.714941f,1.714941f,0);
+    private Vector3 slotRotation = new Vector3(0,0,36.25f);
 
-    // public Vector3 positionInMainCharacter = new Vector3(-0.03f,-0.038f,0);
     private Vector3 positionInMainCharacter = new Vector3(-0.03f,-0.038f,0);
     
     void Start()
@@ -35,6 +37,7 @@ public class EspingardaScript : MonoBehaviour
         itemBehavior.setPosition(positionInMainCharacter);
         itemBehavior.isEquiped = isEquiped;
         getFireRate();
+        setSlotConfiguration();
 
     }
 
@@ -61,6 +64,11 @@ public class EspingardaScript : MonoBehaviour
         }
     }
 
+    public void setSlotConfiguration(){
+        itemBehavior.setSlotPosition(slotPosition);
+        itemBehavior.setSlotRotation(slotRotation);
+        itemBehavior.setSlotScale(slotScale);
+    }
     public void setScriptBullet()
     {
         GameObject obj = new GameObject();
