@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Assertions.Must;
 using UnityEngine.UI;
 
-public class moveCharacter : MonoBehaviour, ProtocolCharacter
+public class moveCharacter : MonoBehaviour
 {
     private Rigidbody2D characterRb2D;
     private float nextFireTime = 0f;
@@ -25,7 +25,7 @@ public class moveCharacter : MonoBehaviour, ProtocolCharacter
     //public collisionGround test2;
     public int amountJump = 0;
     public GameObject gameObjectCollider;
-    public ItemBehavior itemBehavior;
+    public ItemPropertys itemPropertys;
     // Start is called before the first frame update
     public MouseBehavior mouseAngle;
 
@@ -65,8 +65,8 @@ public class moveCharacter : MonoBehaviour, ProtocolCharacter
         playerCollision = GetComponent<Collider2D>();
     }
 
-    public void getItemBehaviorInGameObjectCollider(){
-        itemBehavior = gameObjectCollider.GetComponent<ItemBehavior>();
+    public void getItemPropertysInGameObjectCollider(){
+        itemPropertys = gameObjectCollider.GetComponent<ItemPropertys>();
     }
 
     public void getGround(){
@@ -131,7 +131,7 @@ public class moveCharacter : MonoBehaviour, ProtocolCharacter
     }
 
     public void setObjectIntoInMainCharacter(){
-        gameObjectCollider.transform.localPosition = itemBehavior.getPosition();
+        gameObjectCollider.transform.localPosition = itemPropertys.getPosition();
     }
     public void calculateVelocity()
     {
@@ -171,13 +171,13 @@ public class moveCharacter : MonoBehaviour, ProtocolCharacter
         {
             setGameObjectCollider(collision.gameObject);
             Debug.Log(gameObjectCollider);
-            getItemBehaviorInGameObjectCollider(); 
-            inventory.setSlotPosition(itemBehavior.getSlotPosition());
-            inventory.setSlotScale(itemBehavior.getSlotScale());
-            inventory.setSlotRotation(itemBehavior.getSlotRotation());
+            getItemPropertysInGameObjectCollider(); 
+            inventory.setSlotPosition(itemPropertys.getSlotPosition());
+            inventory.setSlotScale(itemPropertys.getSlotScale());
+            inventory.setSlotRotation(itemPropertys.getSlotRotation());
             inventory.AddInventoryItem(gameObjectCollider);
-            itemBehavior.setParent(transform);
-            itemBehavior.isEquiped = true;
+            itemPropertys.setParent(transform);
+            itemPropertys.isEquiped = true;
             setObjectIntoInMainCharacter();
             gameObjectCollider.SetActive(false);
         }

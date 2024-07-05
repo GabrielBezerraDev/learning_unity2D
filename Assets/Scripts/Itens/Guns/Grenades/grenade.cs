@@ -5,22 +5,22 @@ using UnityEngine;
 
 public class grenade : MonoBehaviour
 {
-    public ItemBehavior itemBehavior;
+    public ItemPropertys itemPropertys;
     private Vector3 positionInMainCharacter = new Vector3(0.028f,-0.112f,0);
 
     // Start is called before the first frame update
 
     private void Awake() {
-        itemBehavior = gameObject.AddComponent<ItemBehavior>();
+        itemPropertys = gameObject.AddComponent<ItemPropertys>();
     }
     void Start()
     {
-        itemBehavior.setPosition(positionInMainCharacter);
+        itemPropertys.setPosition(positionInMainCharacter);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(!itemBehavior.isEquiped) return;
+        if(!itemPropertys.isEquiped) return;
     }
 }

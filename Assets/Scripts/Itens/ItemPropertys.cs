@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ItemBehavior: MonoBehaviour, ProtocolItem {
+public class ItemPropertys: MonoBehaviour, ProtocolItem {
     public bool isContainedInInvetory {get;set;} = false;
     public bool isEquiped {get;set;} = false;
     public Vector3 coordenatesPosition;

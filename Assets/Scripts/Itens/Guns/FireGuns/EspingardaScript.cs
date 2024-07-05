@@ -20,7 +20,7 @@ public class EspingardaScript : MonoBehaviour
 
     public bool isEquiped = false;
 
-    public ItemBehavior itemBehavior;
+    public ItemPropertys itemPropertys;
     private Vector3 slotPosition = new Vector3(5.209733e-05f,7.8f,0);
     private Vector3 slotScale = new Vector3(1.714941f,1.714941f,0);
     private Vector3 slotRotation = new Vector3(0,0,36.25f);
@@ -32,10 +32,10 @@ public class EspingardaScript : MonoBehaviour
         mainCharacter = GameObject.FindGameObjectWithTag("mainCharacter").GetComponent<Transform>();
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         mouseAngle = this.AddComponent<MouseBehavior>();
-        itemBehavior = this.AddComponent<ItemBehavior>();
+        itemPropertys = this.AddComponent<ItemPropertys>();
         velocityBullet = this.AddComponent<ThrowBehavior>();
-        itemBehavior.setPosition(positionInMainCharacter);
-        itemBehavior.isEquiped = isEquiped;
+        itemPropertys.setPosition(positionInMainCharacter);
+        itemPropertys.isEquiped = isEquiped;
         getFireRate();
         setSlotConfiguration();
 
@@ -45,7 +45,7 @@ public class EspingardaScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!itemBehavior.isEquiped) return;
+        if(!itemPropertys.isEquiped) return;
         mouseAngle.setScale(transform, -1,-1);
         mouseAngle.setAngleObject(transform);
         if (Input.GetAxis("Mouse Y") != 0)
@@ -65,9 +65,9 @@ public class EspingardaScript : MonoBehaviour
     }
 
     public void setSlotConfiguration(){
-        itemBehavior.setSlotPosition(slotPosition);
-        itemBehavior.setSlotRotation(slotRotation);
-        itemBehavior.setSlotScale(slotScale);
+        itemPropertys.setSlotPosition(slotPosition);
+        itemPropertys.setSlotRotation(slotRotation);
+        itemPropertys.setSlotScale(slotScale);
     }
     public void setScriptBullet()
     {
