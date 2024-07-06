@@ -34,8 +34,8 @@ public class Inventory : MonoBehaviour
 
     public void AddInventoryItem(GameObject item){
         foreach(ItemInventory slotItem in inventoryItems){
-            if(!slotItem.item && !item.GetComponent<ItemBehavior>().isContainedInInvetory) {
-                item.GetComponent<ItemBehavior>().isContainedInInvetory = true;
+            if(!slotItem.item && !item.GetComponent<ItemPropertys>().isContainedInInvetory) {
+                item.GetComponent<ItemPropertys>().isContainedInInvetory = true;
                 slotItem.item = item;
                 slotItem.spriteItem.GetComponent<Image>().sprite = item.GetComponent<SpriteRenderer>().sprite;
                 slotItem.spriteItem.GetComponent<RectTransform>().localPosition = slotPosition;
@@ -70,7 +70,6 @@ public class Inventory : MonoBehaviour
     public void triggerKeyNumber(){
         for(int i = 0; i < inventoryItems.Count; i++){
             if(Input.GetKeyUp((KeyCode) Enum.ToObject(typeof(KeyCode),enumDigit+i))){
-                Debug.Log("Clicou no botão");
                 equipedItem(i);
                 return;
             }

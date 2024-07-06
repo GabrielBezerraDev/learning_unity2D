@@ -569,7 +569,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ec30ef51f7121b488a62e99ec5fe0b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemBehavior: {fileID: 0}
+  itemPropertys: {fileID: 0}
 --- !u!1 &193135633
 GameObject:
   m_ObjectHideFlags: 0
@@ -756,7 +756,7 @@ MonoBehaviour:
   maxVelocity: 0
   amountJump: 0
   gameObjectCollider: {fileID: 0}
-  itemBehavior: {fileID: 0}
+  itemPropertys: {fileID: 0}
   mouseAngle: {fileID: 0}
 --- !u!61 &193135639
 BoxCollider2D:
@@ -5433,7 +5433,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.53, y: -3.46}
+  m_AnchoredPosition: {x: -1.67, y: -3.5}
   m_SizeDelta: {x: 0.38, y: 0.28}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1766035483
