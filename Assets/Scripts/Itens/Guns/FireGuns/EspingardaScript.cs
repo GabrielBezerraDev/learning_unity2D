@@ -48,6 +48,7 @@ public class EspingardaScript : MonoBehaviour
         if(!itemPropertys.isEquiped) return;
         mouseAngle.setScale(transform, -1,-1);
         mouseAngle.setAngleObject(transform);
+        Debug.Log("Espingarda");
         if (Input.GetAxis("Mouse Y") != 0)
         {
             //double resultado = Math.Sqrt(Math.Pow(Input.GetAxis("Mouse X") - transform.position.x, 2) + Math.Pow(Input.GetAxis("Mouse Y") - transform.position.y, 2));
@@ -77,7 +78,7 @@ public class EspingardaScript : MonoBehaviour
 
     public void spawnBullet()
     {
-        float[] velocitys = velocityBullet.getSpeedRelativeToTheMouse(rotZ);
+        float[] velocitys = velocityBullet.getSpeedRelativeToTheMouse();
         bullet.setPositions(bulletSpawn.position);
         bullet.setRotation(0, 0, rotZ);
         bullet.settingUpTransformBullet();

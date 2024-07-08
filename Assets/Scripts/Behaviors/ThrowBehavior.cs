@@ -4,8 +4,9 @@ public class ThrowBehavior : MonoBehaviour
 {
     public float velocityY = 0;
     public float velocityX = 0;
+    private float rotz;
 
-    public float[] getSpeedRelativeToTheMouse(float rotz)
+    public float[] getSpeedRelativeToTheMouse()
     {
         rotz = MouseBehavior.rotZ;
         checkQuadrant(rotz);

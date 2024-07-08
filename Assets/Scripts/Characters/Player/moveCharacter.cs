@@ -10,6 +10,8 @@ public class moveCharacter : MonoBehaviour
     private Rigidbody2D characterRb2D;
     private float nextFireTime = 0f;
     private Collider2D playerCollision;
+    public ThrowBehavior velocityBullet; 
+
     private collisionGround ground;
     private Collider2D groundCollision;
     [SerializeField]
@@ -28,6 +30,10 @@ public class moveCharacter : MonoBehaviour
     public ItemPropertys itemPropertys;
     // Start is called before the first frame update
     public MouseBehavior mouseAngle;
+    public Dictionary<string, object> dicionaryItems = new Dictionary<string, object>();
+    public ObjectPropertys grenadeItem;
+
+    public delegate void useItems();
 
     private void Awake() {
         addComponentsInMainCharacter();
@@ -35,6 +41,7 @@ public class moveCharacter : MonoBehaviour
     }
     void Start()
     {
+        setDicionary();
         getComponentsInMainCharacter();
         calculateVelocity();
         getGround();
@@ -43,6 +50,9 @@ public class moveCharacter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyUp(KeyCode.Mouse0)){
+            getItemBehavior();
+        }
         setCharacterLookAngle();
         playerIsMove();
         playerIsJump();
@@ -50,10 +60,15 @@ public class moveCharacter : MonoBehaviour
         
     }
 
+    public void setDicionary(){
+        dicionaryItems["grenade"] = new useItems(throwGrenade);
+    }
+
     public void addComponentsInMainCharacter(){
         mouseAngle = this.AddComponent<MouseBehavior>();
         healthCharacter = this.AddComponent<HealthBarScript>();
         inventory = this.AddComponent<Inventory>();
+        grenadeItem = this.AddComponent<ObjectPropertys>();
     }
 
     public void setSliderHealth(){
@@ -118,6 +133,17 @@ public class moveCharacter : MonoBehaviour
         }
     }
 
+    public void getItemBehavior(){
+        try{
+            GameObject currentItem = inventory.getCurrentItem();
+            if(dicionaryItems[currentItem.name] is useItems item){
+                item();
+            }
+        }catch{
+            return;
+        }
+    }
+
     public void setHorizontalVelocity(){
         characterRb2D.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * horizontalVelocity, characterRb2D.velocity.y);
     }
@@ -156,6 +182,16 @@ public class moveCharacter : MonoBehaviour
         jumpValue = velocity;
     }
 
+    public void throwGrenade(){
+        grenadeItem.setGameObject(inventory.getCurrentItem());
+        float[] velocitys = velocityBullet.getSpeedRelativeToTheMouse();
+        grenadeItem.setPositions(bulletSpawn.position);
+        grenadeItem.setRotation(0, 0, rotZ);
+        grenadeItem.settingUpTransformBullet();
+        grenadeItem.setDamageBullet(50f);
+        grenadeItem.setVelocity((velocitys[0] / 3f),(velocitys[1] / 3f));
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         string tagCollider = collision.gameObject.tag;
@@ -175,11 +211,11 @@ public class moveCharacter : MonoBehaviour
             inventory.setSlotPosition(itemPropertys.getSlotPosition());
             inventory.setSlotScale(itemPropertys.getSlotScale());
             inventory.setSlotRotation(itemPropertys.getSlotRotation());
+            if(!itemPropertys.isContainedInInvetory) gameObjectCollider.SetActive(false);
             inventory.AddInventoryItem(gameObjectCollider);
             itemPropertys.setParent(transform);
-            itemPropertys.isEquiped = true;
+            // itemPropertys.isEquiped = true;
             setObjectIntoInMainCharacter();
-            gameObjectCollider.SetActive(false);
         }
         
 

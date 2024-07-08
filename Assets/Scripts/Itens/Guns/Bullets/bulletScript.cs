@@ -87,10 +87,6 @@ public class bulletScript : MonoBehaviour
 
     public void settingUpTransformBullet()
     {
-        //Quaternion quaternion = new Quaternion();
-        //quaternion.x = this.rotationX;
-        //quaternion.y = this.rotationY;
-        //quaternion.z = this.rotationZ;
         this.transform.rotation = Quaternion.Euler(this.rotationX, rotationY, rotationZ);
         this.transform.localScale = new Vector3(0.1191056f, 0.09714954f, 1);
         this.transform.position = this.position;
@@ -101,13 +97,6 @@ public class bulletScript : MonoBehaviour
         Vector3 viewPort = mainCamera.WorldToViewportPoint(this.transform.position);
         return viewPort.x < 0 || viewPort.x > 1 || viewPort.y < 0 || viewPort.y > 1;
     }
-
-    //public void setPositions(float x, float y, float farAway)
-    //{
-    //    this.bulletX = x;
-    //    this.bulletY = y;
-    //    this.farAway = farAway;
-    //}
 
     public void setPositions(Vector3 position)
     {
@@ -139,11 +128,6 @@ public class bulletScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Destroy(gameObject);
-    }
-
-    public void testClass()
-    {
-        //Debug.Log("Working");
     }
 
 }

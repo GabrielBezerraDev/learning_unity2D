@@ -63,6 +63,7 @@ public class Inventory : MonoBehaviour
         if(inventoryItems[slot].item){
             if(currentItem) currentItem.SetActive(false); 
             currentItem = inventoryItems[slot].item.gameObject;
+            currentItem.GetComponent<ItemPropertys>().isEquiped = true;
             currentItem.SetActive(true);
         }
     }
@@ -83,6 +84,10 @@ public class Inventory : MonoBehaviour
             Debug.Log(slotsInventory.transform.GetChild(i).transform.GetChild(0).GetComponent<Image>());
             imagesItems.Add(slotsInventory.transform.GetChild(i).transform.GetChild(0).gameObject);
         }
+    }
+
+    public GameObject getCurrentItem(){
+        return currentItem;
     }
 
 }
