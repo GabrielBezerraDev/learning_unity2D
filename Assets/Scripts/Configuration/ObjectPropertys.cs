@@ -26,8 +26,10 @@ public class ObjectPropertys : MonoBehaviour
 
     private void Update()
     {
-        gameObjectConfiguration.transform.right = GetComponent<Rigidbody2D>().velocity;
-        destroyObject();
+        if(gameObjectConfiguration){
+            gameObjectConfiguration.transform.right = GetComponent<Rigidbody2D>().velocity;
+            destroyObject();
+        }
     }
 
     private void Awake()
@@ -56,6 +58,7 @@ public class ObjectPropertys : MonoBehaviour
 
     public void settingUpRigidbody2DBullet()
     {
+        rbBullet2D = gameObjectConfiguration.GetComponent<Rigidbody2D>();
         rbBullet2D.velocity = new Vector3(velocityX, velocityY, 0);
     }
 
@@ -69,7 +72,10 @@ public class ObjectPropertys : MonoBehaviour
     public void settingUpTransformBullet()
     {
         gameObjectConfiguration.transform.rotation = Quaternion.Euler(rotationX, rotationY, rotationZ);
-        gameObjectConfiguration.transform.localScale = new Vector3(0.1191056f, 0.09714954f, 1);
+        // gameObjectConfiguration.transform.localScale = new Vector3(0.1191056f, 0.09714954f, 1);
+        gameObjectConfiguration.transform.localScale = new Vector3(
+           gameObjectConfiguration.transform.localScale.x * 1.5f, gameObjectConfiguration.transform.localScale.y * 1.5f, gameObjectConfiguration.transform.localScale.z * 1.5f
+        );
         gameObjectConfiguration.transform.position = position;
     }
 
@@ -95,6 +101,7 @@ public class ObjectPropertys : MonoBehaviour
 
     public void setVelocity(float velocityX, float velocityY)
     {
+        Debug.Log("Setando velocidades");
         this.velocityX = velocityX;
         this.velocityY = velocityY;
         settingUpRigidbody2DBullet();

@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Assertions.Must;
 using UnityEngine.UI;
 
 public class moveCharacter : MonoBehaviour
@@ -69,6 +68,7 @@ public class moveCharacter : MonoBehaviour
         healthCharacter = this.AddComponent<HealthBarScript>();
         inventory = this.AddComponent<Inventory>();
         grenadeItem = this.AddComponent<ObjectPropertys>();
+        velocityBullet = this.AddComponent<ThrowBehavior>();
     }
 
     public void setSliderHealth(){
@@ -184,12 +184,16 @@ public class moveCharacter : MonoBehaviour
 
     public void throwGrenade(){
         grenadeItem.setGameObject(inventory.getCurrentItem());
+        Debug.Log(MouseBehavior.rotZ);
+        velocityBullet.testInstance();
         float[] velocitys = velocityBullet.getSpeedRelativeToTheMouse();
-        grenadeItem.setPositions(bulletSpawn.position);
-        grenadeItem.setRotation(0, 0, rotZ);
+        Debug.Log("Método depois da chamada");
+        grenadeItem.setPositions(gameObjectCollider.transform.position);
+        grenadeItem.setRotation(0, 0, MouseBehavior.rotZ);
         grenadeItem.settingUpTransformBullet();
         grenadeItem.setDamageBullet(50f);
         grenadeItem.setVelocity((velocitys[0] / 3f),(velocitys[1] / 3f));
+        // grenadeItem.setVelocity((3f),(3f));
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -206,7 +210,6 @@ public class moveCharacter : MonoBehaviour
         if (tagCollider == "item")
         {
             setGameObjectCollider(collision.gameObject);
-            Debug.Log(gameObjectCollider);
             getItemPropertysInGameObjectCollider(); 
             inventory.setSlotPosition(itemPropertys.getSlotPosition());
             inventory.setSlotScale(itemPropertys.getSlotScale());
@@ -214,8 +217,8 @@ public class moveCharacter : MonoBehaviour
             if(!itemPropertys.isContainedInInvetory) gameObjectCollider.SetActive(false);
             inventory.AddInventoryItem(gameObjectCollider);
             itemPropertys.setParent(transform);
-            // itemPropertys.isEquiped = true;
             setObjectIntoInMainCharacter();
+            
         }
         
 

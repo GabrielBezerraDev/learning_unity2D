@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ThrowBehavior : MonoBehaviour
+public  class ThrowBehavior : MonoBehaviour
 {
     public float velocityY = 0;
     public float velocityX = 0;
@@ -77,6 +77,12 @@ public class ThrowBehavior : MonoBehaviour
         }
         velocityX *= signX;
         velocityY *= signY;
+    }
+
+    public void testInstance(){
+        for(int i = 1; i < 0; i++){
+            Debug.Log(1);
+        }
     }
 }
 

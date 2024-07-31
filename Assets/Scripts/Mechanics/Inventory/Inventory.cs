@@ -79,7 +79,7 @@ public class Inventory : MonoBehaviour
 
     public void getChildrens(){
         slotsInventory = GameObject.FindGameObjectWithTag("slots");
-        Debug.Log(slotsInventory.transform.childCount);
+        // Debug.Log(slotsInventory.transform.childCount);
         for(int i = 0; i < slotsInventory.transform.childCount; i++){
             Debug.Log(slotsInventory.transform.GetChild(i).transform.GetChild(0).GetComponent<Image>());
             imagesItems.Add(slotsInventory.transform.GetChild(i).transform.GetChild(0).gameObject);

@@ -552,7 +552,7 @@ Transform:
   m_GameObject: {fileID: 117310423}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.99, y: -1.789, z: 175.23395}
+  m_LocalPosition: {x: -5.48, y: -4.04, z: 175.23395}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -759,6 +759,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1a88e60a2bf03241832198b1a766caa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  velocityBullet: {fileID: 0}
   fireRate: {fileID: 0}
   testBullet: {fileID: 0}
   jumpValue: 9
@@ -772,6 +773,7 @@ MonoBehaviour:
   gameObjectCollider: {fileID: 0}
   itemPropertys: {fileID: 0}
   mouseAngle: {fileID: 0}
+  grenadeItem: {fileID: 0}
 --- !u!61 &193135639
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3048,11 +3050,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 944617365059564972, guid: 4b1b1e9729992aa4a8e0d66c1061010c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.45
+      value: -5.732
       objectReference: {fileID: 0}
     - target: {fileID: 944617365059564972, guid: 4b1b1e9729992aa4a8e0d66c1061010c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.61
+      value: -1.867
       objectReference: {fileID: 0}
     - target: {fileID: 944617365059564972, guid: 4b1b1e9729992aa4a8e0d66c1061010c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4985,7 +4987,7 @@ Transform:
   m_GameObject: {fileID: 1668865818}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8, y: 0.72, z: 2.4107418}
+  m_LocalPosition: {x: 0.14, y: -3.64, z: 2.4107418}
   m_LocalScale: {x: 5.3, y: 7.155, z: 5.3}
   m_ConstrainProportionsScale: 1
   m_Children:
