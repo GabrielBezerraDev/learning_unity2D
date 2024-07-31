@@ -9,6 +9,9 @@ TagManager:
   - enemy
   - health
   - ground
+  - itemInventory
+  - item
+  - slots
   layers:
   - Default
   - TransparentFX
